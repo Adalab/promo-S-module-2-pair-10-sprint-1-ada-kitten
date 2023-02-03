@@ -23,5 +23,29 @@ const kittenDescThree =
   ' Tienen la cabeza cuadrada y los ojos simétricos, por lo que su bella mirada se ha convertido en una de sus señas de identidad. Sus ojos son grandes y las orejas resultan largas y en punta.';
 const kittenThree = `<li class="card"> <img class="card_img" src="${kittenImageThree}" alt="gatito"/> <h3 class="card_title"> ${kittenNameThree} </h3> <h4 class="card_race"> ${kittenRaceThree} </h4> <p class="card_description"> ${kittenDescThree} </p> </li>`;
 
-kittenList.innerHTML = kittenOne + kittenTwo + kittenThree;
+//kittenList.innerHTML = kittenOne + kittenTwo + kittenThree;
 
+const input_search_desc = document.querySelector('.js_in_search_desc');
+const descrSearchText = input_search_desc.value;
+
+if( kittenDesc.includes(descrSearchText) ) {
+  kittenList.innerHTML += kittenOne
+}
+
+if( kittenDescTwo.includes(descrSearchText) ) {
+  kittenList.innerHTML += kittenTwo
+}
+
+if( kittenDescThree.includes(descrSearchText) ) {
+  kittenList.innerHTML += kittenThree
+}
+
+const input_search_race = document.querySelector('.js_in_search_race');
+const descrSearchRace = input_search_race.value;
+let html = '';
+
+if (input_search_race.value === "") {
+  html = `Uy que despiste, no sabemos su raza`;
+} else {
+  input_search_race.value = kittenRace;
+}
