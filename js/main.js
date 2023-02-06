@@ -1,5 +1,5 @@
 'use strict'
-document.querySelector('.js-new-form');
+const newForm = document.querySelector('.js-new-form');
 //classList.remove("collapsed");
 let kittenList= document.querySelector(".js-list");
 const kittenImage = 'https://dev.adalab.es/gato-siames.webp';
@@ -40,12 +40,39 @@ if( kittenDescThree.includes(descrSearchText) ) {
   kittenList.innerHTML += kittenThree
 }
 
-const input_search_race = document.querySelector('.js_in_search_race');
-const descrSearchRace = input_search_race.value;
-let html = '';
+const navMenu = document.querySelector('.js-menu');
 
-if (input_search_race.value === "") {
-  html = `Uy que despiste, no sabemos su raza`;
+navMenu.addEventListener("click", ()=>{
+  if (newForm.classList.contains('collapsed')) {
+  newForm.classList.remove('collapsed');
 } else {
-  input_search_race.value = kittenRace;
-}
+  newForm.classList.add('collapsed');
+} 
+}); 
+
+const btnAdd = document.querySelector(".js-btn-add");
+const inputDesc = document.querySelector('.js-input-desc');
+const inputPhoto = document.querySelector('.js-input-photo');
+const inputName = document.querySelector('.js-input-name');
+const labelMessageError = document.querySelector('.js-label-error');
+
+btnAdd.addEventListener("click", (event)=>{
+  event.preventDefault();
+  const valueDesc = inputDesc.value;
+  const valuePhoto = inputPhoto.value;
+  const valueName = inputName.value;
+  if (valueDesc === '' || valuePhoto === '' || valueName === '') {
+     labelMessageError.innerHTML ="¡Uy! parece que has olvidado algo";
+  } else {
+  }
+});
+
+const btnCancel = document.querySelector(".js-btn-cancel");
+
+btnCancel.addEventListener('click', (event) => {
+  if (newForm.classList.contains('collapsed')) {
+  newForm.classList.remove('collapsed');
+} else {
+  newForm.classList.add('collapsed');
+} 
+});
