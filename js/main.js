@@ -1,13 +1,16 @@
 'use strict'
-const newForm = document.querySelector('.js-new-form');
+const newFormElement = document.querySelector('.js-new-form');
 //classList.remove("collapsed");
 let kittenList= document.querySelector(".js-list");
+function renderKitten() {
+  const kittenOne = `${kittenImage} ${kittenName} ${kittenRace} ${kittenDesc}`;   
+}
 const kittenImage = 'https://dev.adalab.es/gato-siames.webp';
 const kittenName = 'Anastacio';
 const kittenRace = 'Siamés';
 const kittenDesc =
   ' Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos hace 500 años, donde tuvo su origen muy posiblemente.';
-const kittenOne = `<li class="card"> <img class="card_img" src="${kittenImage}" alt="gatito"/> <h3 class="card_title"> ${kittenName} </h3> <h4 class="card_race"> ${kittenRace} </h4> <p class="card_description"> ${kittenDesc} </p> </li>`;
+/* const kittenOne = `<li class="card"> <img class="card_img" src="${kittenImage}" alt="gatito"/> <h3 class="card_title"> ${kittenName} </h3> <h4 class="card_race"> ${kittenRace} </h4> <p class="card_description"> ${kittenDesc} </p> </li>`;  */
 
 const kittenImageTwo = 'https://dev.adalab.es/sphynx-gato.webp';
 const kittenNameTwo = 'Fiona';
@@ -22,6 +25,8 @@ const kittenRaceThree = 'Maine Coon';
 const kittenDescThree =
   ' Tienen la cabeza cuadrada y los ojos simétricos, por lo que su bella mirada se ha convertido en una de sus señas de identidad. Sus ojos son grandes y las orejas resultan largas y en punta.';
 const kittenThree = `<li class="card"> <img class="card_img" src="${kittenImageThree}" alt="gatito"/> <h3 class="card_title"> ${kittenNameThree} </h3> <h4 class="card_race"> ${kittenRaceThree} </h4> <p class="card_description"> ${kittenDescThree} </p> </li>`;
+
+
 
 //kittenList.innerHTML = kittenOne + kittenTwo + kittenThree;
 
@@ -40,23 +45,42 @@ if( kittenDescThree.includes(descrSearchText) ) {
   kittenList.innerHTML += kittenThree
 }
 
-const navMenu = document.querySelector('.js-menu');
 
-navMenu.addEventListener("click", ()=>{
-  if (newForm.classList.contains('collapsed')) {
-  newForm.classList.remove('collapsed');
-} else {
-  newForm.classList.add('collapsed');
-} 
-}); 
 
+const linkNewFormElement = document.querySelector('.js-menu');
+
+const btnCancel = document.querySelector(".js-btn-cancel");
+
+btnCancel.addEventListener('click', (event) => {
+  return hideNewCatForm();
+});
+
+function showNewCatForm() {
+  newFormElement.classList.remove('collapsed');
+}
+function hideNewCatForm() {
+  newFormElement.classList.add('collapsed');
+}
+
+linkNewFormElement.addEventListener('click', handleClickNewCatForm);
+
+function handleClickNewCatForm(event) {
+  event.preventDefault();
+  if (newFormElement.classList.contains('collapsed')) {
+    return showNewCatForm();
+  } else {
+    return hideNewCatForm();
+  }
+}
 const btnAdd = document.querySelector(".js-btn-add");
 const inputDesc = document.querySelector('.js-input-desc');
 const inputPhoto = document.querySelector('.js-input-photo');
 const inputName = document.querySelector('.js-input-name');
 const labelMessageError = document.querySelector('.js-label-error');
 
-btnAdd.addEventListener("click", (event)=>{
+btnAdd.addEventListener('click', addNewKitten);
+
+function addNewKitten(event) {
   event.preventDefault();
   const valueDesc = inputDesc.value;
   const valuePhoto = inputPhoto.value;
@@ -65,14 +89,5 @@ btnAdd.addEventListener("click", (event)=>{
      labelMessageError.innerHTML ="¡Uy! parece que has olvidado algo";
   } else {
   }
-});
+}
 
-const btnCancel = document.querySelector(".js-btn-cancel");
-
-btnCancel.addEventListener('click', (event) => {
-  if (newForm.classList.contains('collapsed')) {
-  newForm.classList.remove('collapsed');
-} else {
-  newForm.classList.add('collapsed');
-} 
-});
