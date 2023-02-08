@@ -28,30 +28,35 @@ const kittenDescThree =
   ' Tienen la cabeza cuadrada y los ojos simétricos, por lo que su bella mirada se ha convertido en una de sus señas de identidad. Sus ojos son grandes y las orejas resultan largas y en punta.';
 const kittenThree = renderKitten(kittenImageThree, kittenDescThree , kittenNameThree, kittenRaceThree);
 
+const buttonSearch = document.querySelector('.js-button-search');
 const input_search_desc = document.querySelector('.js_in_search_desc');
-const descrSearchText = input_search_desc.value;
-
+ 
+const filterKitten = (event) => {
+  event.preventDefault();
+  kittenList.innerHTML = "";
+  const descrSearchText = input_search_desc.value;
 if( kittenDesc.includes(descrSearchText) ) {
-  kittenList.innerHTML += kittenOne
+  kittenList.innerHTML += kittenOne;
 }
 
 if( kittenDescTwo.includes(descrSearchText) ) {
-  kittenList.innerHTML += kittenTwo
+  kittenList.innerHTML += kittenTwo;
 }
 
 if( kittenDescThree.includes(descrSearchText) ) {
-  kittenList.innerHTML += kittenThree
+  kittenList.innerHTML += kittenThree;
+}
 }
 
-
+buttonSearch.addEventListener('click', filterKitten); 
 
 const linkNewFormElement = document.querySelector('.js-menu');
 
 const btnCancel = document.querySelector(".js-btn-cancel");
 
-btnCancel.addEventListener('click', (event) => {
-  return hideNewCatForm();
-});
+const cancelNewKitten = (event) => { return hideNewCatForm()};
+
+btnCancel.addEventListener('click', (cancelNewKitten));
 
 function showNewCatForm() {
   newFormElement.classList.remove('collapsed');
