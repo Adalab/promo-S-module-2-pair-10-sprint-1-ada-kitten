@@ -21,7 +21,7 @@ const kittenData_1 = {
   race: 'Siamés',
 };
 
-kittenList.innerHTML += renderKitten(kittenData_1);
+/* kittenList.innerHTML += renderKitten(kittenData_1); */
 
 const kittenData_2 = {
   image: 'https://dev.adalab.es/sphynx-gato.webp',
@@ -30,7 +30,7 @@ const kittenData_2 = {
   race: 'Sphynx',
 };
 
-kittenList.innerHTML += renderKitten(kittenData_2);
+/* kittenList.innerHTML += renderKitten(kittenData_2); */
 
 const kittenData_3 = {
   image: 'https://dev.adalab.es/maine-coon-cat.webp',
@@ -39,7 +39,9 @@ const kittenData_3 = {
   race: 'Maine Coon',
 };
 
-kittenList.innerHTML += renderKitten(kittenData_3);
+/* kittenList.innerHTML += renderKitten(kittenData_3); */
+
+const kittenDataList = [kittenData_1, kittenData_2, kittenData_3];
 
 const buttonSearch = document.querySelector('.js-button-search');
 const input_search_desc = document.querySelector('.js_in_search_desc');
