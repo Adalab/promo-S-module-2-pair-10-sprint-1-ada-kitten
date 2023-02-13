@@ -21,16 +21,12 @@ const kittenData_1 = {
   race: 'Siamés',
 };
 
-/* kittenList.innerHTML += renderKitten(kittenData_1); */
-
 const kittenData_2 = {
   image: 'https://dev.adalab.es/sphynx-gato.webp',
   name: 'Fiona',
   desc: ' Produce fascinación y curiosidad. Exótico, raro, bello, extraño… hasta con pinta de alienígena han llegado a definir a esta raza gatuna que se caracteriza por la «ausencia» de pelo.',
   race: 'Sphynx',
 };
-
-/* kittenList.innerHTML += renderKitten(kittenData_2); */
 
 const kittenData_3 = {
   image: 'https://dev.adalab.es/maine-coon-cat.webp',
@@ -39,28 +35,27 @@ const kittenData_3 = {
   race: 'Maine Coon',
 };
 
-/* kittenList.innerHTML += renderKitten(kittenData_3); */
-
 const kittenDataList = [kittenData_1, kittenData_2, kittenData_3];
+
+function renderKittenList(kittenDataList) {
+  kittenList.innerHTML = "";
+  for (const kittenItem of kittenDataList) {
+   kittenList.innerHTML += renderKitten(kittenItem);
+  } 
+}
 
 const buttonSearch = document.querySelector('.js-button-search');
 const input_search_desc = document.querySelector('.js_in_search_desc');
- 
-const filterKitten = (event) => {
+
+function filterKitten(event) {
   event.preventDefault();
-  kittenList.innerHTML = "";
   const descrSearchText = input_search_desc.value;
-if( kittenData_1.desc.includes(descrSearchText) ) {
-  kittenList.innerHTML += renderKitten(kittenData_1);
-}
-
-if( kittenData_2.desc.includes(descrSearchText) ) {
-  kittenList.innerHTML += renderKitten(kittenData_2);
-}
-
-if( kittenData_3.desc.includes(descrSearchText) ) {
-  kittenList.innerHTML += renderKitten(kittenData_3);
-}
+  kittenList.innerHTML = '';
+  for (const kittenItem of kittenDataList) {
+    if( kittenItem.desc.includes(descrSearchText) ) {
+    kittenList.innerHTML += renderKitten(kittenItem);
+    }
+  }
 }
 
 buttonSearch.addEventListener('click', filterKitten); 
